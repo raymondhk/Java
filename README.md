@@ -42,3 +42,50 @@ Java goes through analysis and optimization before it is run. The compiler can f
 **Object Oriented**
 
 Java is a fully object oriented programming language. More on this later.
+
+**Keywords**
+
+Our .java file that is used to create our java program is called the **source file** and the content inside is called the **source code**. After running *javac [file.java]* and successfully compiling Java automatically generates a **.class** file. This file contains **bytecode**. **Bytecode** is computer-independent but partially compiled and is then run in the terminal.
+
+## OOP Introduction
+Some basic code:
+```java
+public class HelloWorld {
+    public static void main(String[] args) {
+        System.out.println("Hello World");
+    }
+}
+```
+- ```HelloWorld``` is a class. Java uses object-oriented programming for everything. In fact, it is not possible to write a function that doesn't belong to a class. **It it important to note that our file name must be the same name as our class.**
+- ```main``` is a method that defines the entry point for an executable Java file, it is required for any file that is intended to be run from the command line. A method is just a name for a function that belongs to a class. Since everything must belong to a class, *all functions in Java are methods*.
+
+**Syntax**
+
+In writing Java code keep these in mind:
+- **Case Sensitivity:** Java is case sensitive, which means 'Hello' and 'hello' have a different meaning.
+- Class Names: Class names are written in **PascalCase (UpperCamelCase)**, earch word is capitalized and there are no spaces between them.
+- Method Names: All method names should start with a lower case letter, if there are multiple words in the method name they should be written in **lowerCamelCase**. Typically verbs are used as method names.
+- **Program Filename:** The name of the program file should match the class name exactly.
+- Mandatory Method:Java Program processing starts from the main() method which is mandatory part of every executable Java program. It should look like:
+```java
+public static void main(String[] args){
+    // your code
+}
+```
+
+**Example:**
+```java
+class HelloWorld{
+    public static void main(String[] args){
+        System.out.println("Hello World");
+    }
+}
+```
+- Every application begins with a **class** definition. A class can contain multiple methods (which should be enclosed between the class opening and closing curly brace tag).
+- The entry point (for an executable Java file) is the **main() method** so it is important that you have a main() method. The method signature for the main() method contains three modifiers:
+    - **public:** This is known as an *access modifier*. Any **public** method we write is accessible from any other class or method in our project.
+    - **static:** This means that the method belongs to and is called from the class itself rather than from an instance of the class.
+    - **void:** This indicates that the main() method doesn't return anything.
+
+More to come on these terms.
+
