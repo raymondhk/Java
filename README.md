@@ -523,3 +523,4 @@ Consider using interfaces if any of these statements apply to your situation:
 - You want to take advantage of multiple inheritance types
 
 
+[Java Questions](questions.md)
