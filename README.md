@@ -159,3 +159,279 @@ Java will allow implicit conversions as long as the target type has a range larg
 
 ## Importing
 > Quick excerpt about importing: Java has many built in classes and methods that are readily available to developers. To tell Java we want to use these special classes we just have to use an import statement before our class definition.
+
+## Strings
+**Strings** represent a sequence of characters.
+
+Strings belong to a class. *Instances of the String class are immutable, so once you create a String, it cannot be modified.*
+
+**Methods of the String class**
+- Length: Strings have a method to determine their length.
+- Concatenate: A String method that allows two strings to be squashed together. Since each each string is immutable, this results in a brand new string. The '+' sign is also overloaded to provide the same functionality: "Welcome," + " ninja" + "!"; // displays "Welcome, ninjas!"
+- Format: Another way of concatenating strings!
+```java
+String ninja = String.format("Hi %s, you owe me $%.2f !", "Jack", 25.);
+System.out.println(ninja);
+// Will print out Hi Jack, you owe me $25.00 !
+// Where %s is expecting a string
+// And %.2f is expecting a float data type. The value 2 will just place two values to right of the decimal point.
+```
+- IndexOf: The indexOf() method searches left-to-right inside the given string for a 'target' string. The indexOf() method returns the index number where the target string is first found or -1 if the target is not found.
+
+## Conditionals
+> We use conditionals in conjunction with operators to control the flow of the program. Remember:
+- A condition always returns true or false
+- As long as something has a value (Which almost everything in Java does) it can be used in a condition
+
+## Methods
+Due to the object oriented nature of Java, you will only be dealing with methods and never stand alone functions. 
+
+**Method Declaration**
+
+Methods are just functions that are attached to an object. Each method will have a code body and a method declaration which includes the access level, return type, name, and parameter variables.
+- code body: the block of code that you want to be repeated whenever you invoke or call your method
+- return type: the return value must either be a class, a primitive, or void
+- parameter variables: possible inputs for your method, when calling it in the future, the arguments supplied must match the order and type in your method declaration
+
+**Method Signatures**
+
+A method signature for ```public String fizzBuzz(int number) {} ``` looks like ```fizzBuzz(int)``` the information contained in the signature is:
+1. name
+2. parameter type
+
+Signatures allows us to do something called *overloading* methods
+
+**Overloading Methods**
+
+Method overloading is when we call two methods with the same name in the same class. For example:
+```java
+    // ...
+    public String fizzBuzz(int number) {
+    // ...
+    public String fizzBuzz(String number, int numberTwo) {
+    // ...
+```
+Whichever method is called is based on what argument type and the method signature.
+
+## Arrays
+Arrays in Java are a fixed-size sequential collection of elements of the same type with a zero-based index. *Note:* In Java an array has a fixed size (after initialization) meaning you cannot add or remove items from an array.
+
+**ArrayList**
+
+The ```util``` module provides us with an ```ArrayList``` that is not fixed in size, but is still a sequential zero-based index collection of elements. We can add as many items as we need to.
+```java
+import java.util.ArrayList;
+ArrayList<Integer> myArray = new ArrayList<Integer>();
+```
+First ```<Integer>``` is a part called *generics* it tells our ArrayList of the acceptable types it can hold. Generics help to keep our compiler, and us, from making mistakes.
+
+## Loops
+Two main types of loops, the while loop and the for loop. There is also the enhanced for loop which can't do everything that the other two can do, but does provide a nice convenience.
+
+**While Loop**
+
+The while loop is checking a condition (true or false) and looping through a block of code. If the condition never switches then it will become an infinite loop, therefore it is important to make sure that we are modifying some aspect of the program to make the switch, eventually.
+
+**For Loop**
+
+A specialized while loop. The most common ```for``` statement you'll see is comprised of 4 key parts: 
+- the initialization (```int i = 0```)
+- the termination (```i < 7```)
+- the increment (```i++```)
+- the body statment (```System.out.println('bar')```)
+```java
+for (int i = 0; i < 7; i++){
+    System.out.println("bar");
+}
+```
+
+**Enhanced For Loop**
+```java
+for (String name : dynamicArray){
+    System.out.println("hello " + name);
+    // other operations using name
+}
+// parts referenced below
+for (element container : collection){
+    body statements
+}
+```
+
+## Maps
+While arrays and lists are useful not everything is stored in a specific sequential order. On the Java platform key-value pairs are store in what we call "Maps". The primary type being the HashMap.
+
+**HashMap**
+
+HashMaps allow you to store key-value pairs, but does not have any order. 
+```java
+import java.util.HashMap;
+HashMap<String, String> userMap = new HashMap<>();
+// once you've created it you can put your key-value pairs in:
+userMap.put("nninja@codingdojo.com", "Nancy Ninja");
+userMap.put("ssamurai@codingdojo.com", "Sam Samurai");
+// and also get them out:
+String name = userMap.get("nninja@codingdojo.com");
+```
+You can do much more with HashMaps, to check that out click: https://docs.oracle.com/javase/8/docs/api/java/util/HashMap.html
+
+## Exception Handling
+Sometimes it is impossible to avoid errors. We might be making a call to a database, read or write to a file, or even just using a class written by someone else - all of these are exceptional situations that could cause errors that would bring our program to a stop. However, most code you interact with is kind enough to know when a risky operation is happening and will declare that it might *throw* an exception of a certain type.
+
+**Try/Catch**
+
+In Java we can utilize a ```try``` statement. This will try out some risky code and then catch any exceptional events that arise. Example:
+```java
+class DeliverMessage{
+    public static void main(String[] args){
+        UnreliableFriend friend = new UnreliableFriend();
+        try{
+            friend.deliverMessage();
+            System.out.println("The message was delivered!");
+        } catch (OutOfGasException e){
+            System.out.println("Hey, uh, so, I ran out of gas..");
+            // back-up plan here.
+        }
+    }
+}
+```
+# Java OOP
+## Objects and Classes
+An **Object** is a collection of behaviors and properties that all revolve around the same concept; this collection of behaviors and properties are called *instance members*. They are reusable and are created from blueprints known as *classes*.
+
+You create a **Class** in Java by starting with the keyword ```class``` and the name of the class followed by ```{ }```. Classes should be named with a noun. Also the convention is to use **PascalCase**.
+
+In Java you can have multiple classes in the same file but only one class that is public and that public class must be named identically to the file's name.
+
+##Method
+Once again a ```method``` is just a function that belongs to a class. A method can do things like print, get, set, or delete information, or anything else you can think of. We name methods after verbs.
+
+One of the most important concepts relating to OOP is that objects only share certain aspects about themselves publically. **Public Methods** deal with how to interact with the object, but we keep all the details about the logic we are performing inside those functions **private**. This gives us control over what information we are croadcasting.
+
+**Defining Terms**
+
+- **modifiers:** ```private``` is the access modifier that defines the access type of the method. A private method will only be visible to the object itself and cannot be called from other classes.
+    - ```private```: only the class in which it is declared can see and access the method, this is the most restrictive access level
+    - ```protected```: protected access gives subclasses a change to use the method, while preventing a nonrelated class from trying to use it
+    - ```public```: Every class everywhere has access to the method
+We will discuss ```static``` a little later.
+- **return type:** ```String``` is a return type declaring that a method return a ```Sting``` type. Other return types may be entered whatever your preferred return type is. In Java, you must specify what data type your method will return, otherwise it will result in an error
+- **method name:** the convention for choosing a name for your method depends on what return type the method has. For example if the method returns a boolean the convention is to ask a question in the name. We use **lowerCamelCase** for method names.
+- **parameter list:** this is common to all programming languages, whatever is enclosed in the opening and closing parenthesis are called parameters, declaring the datatype is required when there are parameters
+- **method body:** the method body defines the instructions that are to be executed when the method is called, it is the code between the curly braces
+- **method type:** ```static``` defines the method to be a **class method**  that is invoked without reference
+- **static modifier:** this is the most common modifier you'll see that is not an access modifier, static methods can be called without creating an object, class methods are useful for creating for creating constants and class fields that need to be used throughout a program
+
+## Member Variables
+Attributes of a class would be referred to as **member variables** or **fields**. Three types of variables in Java:
+- Member variables - object attributes or fields
+- Local variables - variables in method/code blocks that are not member variables
+- Parameter variables - those that are declared in your method
+
+**Getters and Setters**
+
+Member variables are typically declared inside the class before any method and are accessed via getter and setter methods. The variables themselves should almost always be declared as ```private``` to prevent access directly to the ```field```. **Getters** are methods that retrieve a field value and **setters** are methods that set the field value.
+
+## Constructors and Method Overloading
+A **constructor**  method is a special function that gets called when an instance of an object is created. The difference between a construtor method and other methods are:
+- It doesn't have a **return type**
+- The name of the constructor **MUST** be the same name of the class to which is belongs
+- A constructor is called automatically when a new instance of an object is created
+
+Constructor methods are used to execute some block of code on object instantiation.
+
+Once again **Overloading** a method is just defining new method signatures for the same method name. Example: ```new Vehicle()```, ```new Vehicle('someColor)```, and ```new Vehicle('someColor', 4)```. Remember that the method overloading technique is not only for constuctors; any method can be overloaded.
+
+## this Keyword
+In Java, ```this``` refers to the current object within the context of an instance method or constructor. You can refer to any member variable of the current object by using this. 
+```java
+class Person {
+    private int age;
+    private String name;
+    public Person(int ageParam, String nameParam) {
+        this.age = ageParam;
+        this.name = nameParam;
+    }
+}
+// above is the same as below
+class Person {
+    private int age;
+    private String name;
+    public Person(int ageParam, String nameParam) {
+        age = ageParam;
+        name = nameParam;
+    }
+}
+```
+There is one case when you **MUST** use ```this```, if your parameter variables share the same name as one of your member variables:
+```java
+class Person {
+    private int age;
+    private String name;
+    public Person(int age, String name) {
+        this.age = age;
+        this.name = name;
+        
+        // this will not set the attribute value. 'age' is a local variable in the constructor method and its value is the very first argument.
+        age = age 
+    }
+}
+```
+
+**Constructor Overloading**
+
+Another use of ```this``` is when you have overloaded your constructor, but don't want to have to write any repetitive code.
+```java
+public class Person {
+    private int age;
+    private int cmHeight;
+    private String name;
+    public Person() {
+        this(20, "John Doe", 171);
+    }
+    
+    public Person(int age, String name, int cmHeight) {
+        this.age = age;
+        this.name = name;
+        this.cmHeight = cmHeight;
+    }
+    // ...
+```
+
+**Object Superclass**
+
+Since this refers to your object and given that all objects are decendants of the ```Object``` class, this means we are able to use methods inherited from the ```Object``` class.
+
+The ```Object``` class is considered a superclass because it is at the top of the class Hierarchy, it contains methods that all of our objects can use, but to access them you have to use the ```this``` keyword. Some of the most used methods:
+- ```getClass()```: returns a ```Class``` object that represents the object's current class
+- ```.equals()```: compares two objects for equality and returns a boolean
+- ```.toString()```: return a string representation of the object, if you want you can override this method
+
+## Inheritance
+Inheritance is one of the most important features of object oriented programming.
+
+**Superclass, subclass, and extending**
+```java
+public class Human extends Mammal {
+
+}
+```
+Let's say you had a Mammal class that you've written out and you want to create another class called Human and you want the Human class to have the same methods as the Mammal class, instead of rewriting tons of code you can extend the class.
+
+In the above example the Human class would become a *subclass* of the Mammal class and the Mammal class would be the *superclass* of the Human. The **extends** keyword tells our compiler the relationship and now the Human class has inherited all the members from its superclass (except it won't have access to private member variables unless through getters and setters).
+
+**Overriding Methods**
+
+You can change or extend the method of a superclass by just writing a method that has the same method signature and return type as the parent method. The new method will be called on the subclass whenever it is invoked. Let's say Mammals have a method ```startSleeping()``` and you want to change it in the Human class:
+```java
+class Human extends Mammal {
+    // ...
+    public void startSleeping() {
+        System.out.println("Toss and turn");
+        super.startSleeping();
+    }
+}
+```
+The Humans now toss and turn, but we added the ```super``` keyword to our method now too. With the ```super``` keyword we now can invoke our new method and the parent method in whatever order we choose. If we did not use the ```super``` to call the original method our new method would over write our old whenever we called the class Human.
+
+## Packages
+In Java a package is a namespace that contains a set of related classes. It is a grouping of related types that helps to organize code and prevent collision of class names. You can think of packages as similar to folders. This is Java's way of organizing, instead of us having to save our Java classes into a single project folder we can use sub folders (packages) to separate our classes.
