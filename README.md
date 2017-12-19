@@ -435,3 +435,91 @@ The Humans now toss and turn, but we added the ```super``` keyword to our method
 
 ## Packages
 In Java a package is a namespace that contains a set of related classes. It is a grouping of related types that helps to organize code and prevent collision of class names. You can think of packages as similar to folders. This is Java's way of organizing, instead of us having to save our Java classes into a single project folder we can use sub folders (packages) to separate our classes.
+
+## More on Static
+Sometimes we want a variable shared across all objects, we achieve this by creating class variables. These variables are in one fixed location in memory, and all objects have access to it. It is also accessible without even creating any instances of the class. Example, what if we want to keep track of how many pbjects frmo the Person class we have created, we need a class variable to hold on to the current count:
+```java
+public class Person {
+    private int age;
+    private String name;
+    public static int numberOfPeople = 0;
+    public Person(int ageParam, String nameParam) {
+        age = ageParam;
+        name = nameParam;
+        numberOfPeople++;
+    }
+}
+```
+
+**Static Methods**
+
+When creating static variables it is common practice to create static methods to access said variables. Example:
+```java
+public class Person {
+    private int age;
+    private String name;
+    // the variable is now private
+    private static int numberOfPeople = 0;
+    public Person(int ageParam, String nameParam) {
+        age = ageParam;
+        name = nameParam;
+        numberOfPeople++;
+    }
+    
+    public static int peopleCount() {
+        return numberOfPeople;
+    }
+}
+```
+Important to note class (static) methods cannot access instance cariables or instance methods directly, in addition, class (static) methods cannot use the ```this``` keyword as there is no instance for this to refer to.
+
+## Interface
+Interfaces arise out of the need for several objects to be able to interact with something in the same way. Imagine you had both cat and dog classes but they share functionality, what if they would both need to access ```giveOwnerAffection()``` and ```sleepInside()``` but then implement them differently? We do not need to create new classes for both, instead we can create an interface for each class to implement. 
+
+Following the cat and dog example we would create a ```HousePet``` interface that declares methods  ```giveOwnerAffection()``` and ```sleepInside()```. This also helps us with any future classes that become house pets.
+
+To reiterate: **An interface is not a class** and while writing an interface is similar to writing a class they are two different concepts. A class describes the attrivbutes and behaviors of an object. Amn interface states behaviors that a class must implement.
+
+In an interface you can not specify a specific implementation, more specifically this means you can only specify methods but not implement them.
+
+Commonly: **An interface is a group of related methods with empty bodies**
+
+**Interface Methods**
+
+There are 3 types of interface methods: default, static, and abstract.
+- ```default``` methods allow developers to create default methods that do not need implementation
+- ```static``` methods are interface member methods, they are implemented on the interface level and are called on the interface not the class, therfore you cannot override static interface methods you can only call them directly on the interface that they were declared
+- ```abstract``` methods are methods that are declared without implementation, the ```abstract``` method if implicit and will be the standard method if ```default``` or ```static``` are not declared
+Also - ```public``` is the implicit access modifier
+
+**Implementing an Interface**
+To implement you simply use the ```implements``` keyword in our class definition. There is one rule: a class that implements an interface must implement all methods that were defined in the interface definiton besides ```default``` and ```static```.
+
+## Abstract
+Abstract classes are very similar to interfaces. They cannot be instantiated and methods may or may not have the implementation. However, in abstract classes, fields are not static and final by default. Therfore fields are not constants. Moreover methods may have all three levels of visibility: public, protected, and private. Unlike interfaces, where a class can implement multiple interfaces, a class can only extend one class, whether it is abstract or not.
+
+**Why Abstract?**
+
+Think about the ```Mammal``` class, it was only written so that other classes could extend it. In a large system, you may find yourself designing other such classes that should not themselves be instantiated. These are exactly what abstract classes are for - to prevent ambiguous classes from being instantiated in our code.
+
+**Defining an Abstract Class**
+
+An abstract class is defined with the ```abstract``` keyword in the class definition. An abstract class may or may not contain abstract methods - methods without implementation, but if a class contains an abstract method, the class itself must be abstract.
+
+**Abstract class that implements an interface**
+
+If an abstract class implements an interface it can implement some methods and leave to the subclass to implement the rest of the methods.
+
+**Abstract vs Interfaces**
+
+Consider using abstract classes if any of these statements apply to your situation:
+- You want to share code among several closely related classes
+- You expected that classes that extend your abstract class have many common methods or fields, or require access modifiers other than public (such as protected and private)
+- You want to declare non-static or non-final fields, this enables you to define methods that can access and modify the sate of the object to which they belong
+
+Consider using interfaces if any of these statements apply to your situation:
+- You expect that unrelated classes would implement your interface
+- You want to specify the behavior of a particular data type, but not converned about who implements its behavior
+- You want to take advantage of multiple inheritance types
+
+
