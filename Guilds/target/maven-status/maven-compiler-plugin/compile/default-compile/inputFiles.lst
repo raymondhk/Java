@@ -1,0 +1,13 @@
+/Users/ray/Documents/Java/Guilds/src/main/java/com/project/Guilds/repositories/UserRepository.java
+/Users/ray/Documents/Java/Guilds/src/main/java/com/project/Guilds/services/UserService.java
+/Users/ray/Documents/Java/Guilds/src/main/java/com/project/Guilds/controllers/Users.java
+/Users/ray/Documents/Java/Guilds/src/main/java/com/project/Guilds/models/User.java
+/Users/ray/Documents/Java/Guilds/src/main/java/com/project/Guilds/GuildsApplication.java
+/Users/ray/Documents/Java/Guilds/src/main/java/com/project/Guilds/services/UserDetailsServiceImplementation.java
+/Users/ray/Documents/Java/Guilds/src/main/java/com/project/Guilds/repositories/RingRepository.java
+/Users/ray/Documents/Java/Guilds/src/main/java/com/project/Guilds/models/Ring.java
+/Users/ray/Documents/Java/Guilds/src/main/java/com/project/Guilds/config/WebSecurityConfig.java
+/Users/ray/Documents/Java/Guilds/src/main/java/com/project/Guilds/repositories/GuildRepository.java
+/Users/ray/Documents/Java/Guilds/src/main/java/com/project/Guilds/controllers/Rings.java
+/Users/ray/Documents/Java/Guilds/src/main/java/com/project/Guilds/validators/UserValidator.java
+/Users/ray/Documents/Java/Guilds/src/main/java/com/project/Guilds/models/Guild.java

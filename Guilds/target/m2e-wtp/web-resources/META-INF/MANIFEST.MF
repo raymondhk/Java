@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Implementation-Title: Guilds
+Implementation-Version: 0.0.1-SNAPSHOT
+Built-By: ray
+Implementation-Vendor-Id: com.project.Guilds
+Build-Jdk: 1.8.0_151
+Implementation-URL: http://projects.spring.io/spring-boot/Guilds/
+Created-By: Maven Integration for Eclipse
+Implementation-Vendor: Pivotal Software, Inc.
+
